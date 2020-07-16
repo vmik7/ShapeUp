@@ -37,7 +37,7 @@
 }
 
 .logo:hover {
-    cursor: pointer;
+    cursor: [pointer];
 }
 
 .logo__text {
@@ -135,4 +135,201 @@
 
 .header__buttons .button_red {
     margin-right: 17px;
+}
+
+.section {
+    padding: 80px 0;
+    background: #111;
+    font-size: 14px;
+}
+
+.section__head {
+    margin-bottom: 45px;
+}
+
+.section__sub-title {
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: #12c2e9;
+}
+
+.section__title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 0.05em;
+    margin-top: 11px;
+    margin-bottom: 24px;
+}
+
+.section__head-separator {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient( 45deg, #d1003a 0%, #e60114 100%);
+}
+
+.section__head_center {
+    width: 100%;
+}
+.section__head_center > * {
+    text-align: center;
+}
+.section__head_center .section__head-separator {
+    margin: 0 auto;
+}
+
+.about__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about__left {
+    width: 514px;
+}
+
+.section__heading {
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 26px;
+}
+
+.section__paragraph {
+    line-height: 26px;
+    margin: 31px 0;
+}
+
+.learn-more {
+    text-transform: capitalize;
+    color: #ed213a;
+}
+.learn-more {
+    cursor: pointer;
+}
+
+.about__right {
+    width: 564px;
+}
+
+.about__video {
+    height: 400px;
+    margin-bottom: 20px;
+    background: url('../img/video.png') center top / cover no-repeat;
+    position: relative;
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 54px;
+    height: 54px;
+    margin-top: -27px;
+    margin-left: -27px;
+    cursor: pointer;
+}
+
+.about__video-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about__video-mini {
+    width: 170px;
+    height: 100px;
+    background: #ed213a;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.about__video-mini:hover {
+    border: 2px solid #f80759;
+    cursor: pointer;
+}
+
+.about__video-mini:nth-child(1) {
+    background: url('../img/video1.png') center top / cover no-repeat;
+}
+.about__video-mini:nth-child(2) {
+    background: url('../img/video2.png') center top / cover no-repeat;
+}
+.about__video-mini:nth-child(3) {
+    background: url('../img/video3.png') center top / cover no-repeat;
+}
+
+.trainers__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trainer {
+    width: 212px;
+    height: 300px;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+.trainer:hover {
+    filter: none;
+}
+
+.trainer:nth-child(1) {
+    background: url('../img/trainer1.png') center top / cover no-repeat;
+}
+.trainer:nth-child(2) {
+    background: url('../img/trainer2.png') center top / cover no-repeat;
+}
+.trainer:nth-child(3) {
+    background: url('../img/trainer3.png') center top / cover no-repeat;
+}
+.trainer:nth-child(4) {
+    background: url('../img/trainer4.png') center top / cover no-repeat;
+}
+.trainer:nth-child(5) {
+    background: url('../img/trainer5.png') center top / cover no-repeat;
+}
+
+.trainer__wrapper {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( 0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0) 50%);
+    opacity: 0;
+    border: 2px solid transparent;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.trainer:hover .trainer__wrapper {
+    opacity: 1;
+    border-color: #f80759;
+}
+
+.trainer__offer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0px;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+.trainer:hover .trainer__offer {
+    bottom: 19px;
+}
+
+.trainer__name {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    color: transparent;
+    transition: all 0.3s ease;
+}
+.trainer:hover .trainer__name {
+    color: #fff;
+}
+
+.trainer__info {
+    font-size: 12px;
+    line-height: 17px;
+    color: transparent;
+    transition: all 0.3s ease;
+}
+.trainer:hover .trainer__info {
+    color: #12c2e9;
 }
