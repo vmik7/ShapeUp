@@ -1,0 +1,138 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Lato, sans-serif;
+    color: #fff;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.header {
+    background: url('../img/header-bg.png') center top / cover no-repeat;
+    height: 750px;
+    padding-top: 28px;
+}
+
+.header__top {
+    display: flex;
+    align-items: center;
+}
+
+.header__nav {
+    margin-left: auto;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.logo__text {
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.logo__text span {
+    color: #f80759;
+}
+
+.logo > * {
+    display: inline-block;
+}
+
+.logo img {
+    width: 30px;
+    height: 26px;
+    margin-right: 7px;
+}
+
+.nav__list {
+    display: flex;
+}
+
+.nav__item {
+    display: block;
+    margin-right: 30px;
+}
+.nav__item:last-child {
+    margin-right: 0;
+}
+
+.nav__item a {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.nav__item:hover a {
+    color: #f80759;
+    cursor: pointer;
+}
+
+.nav__item_active a {
+    color: #f80759;
+}
+
+.header__offer {
+    margin-top: 189px;
+    width: 650px;
+}
+
+.header__title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 68px;
+}
+
+.header__title span {
+    font-size: 48px;
+    color: #12c2e9;
+}
+
+.header__text {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 14px;
+    margin-bottom: 26px;
+}
+
+.button {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid #f80759;
+    background: transparent;
+    width: 200px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+.button:hover {
+    cursor: pointer;
+    background: #db0127;
+    box-shadow: 0 5px 19px rgba(219, 1, 29, 0.5);
+    border-color: #db0127;
+}
+
+.button_red {
+    border: none;
+    background: linear-gradient( 45deg, #d1003a 0%, #e60114 100%);
+    transition: box-shadow 0.3s ease;
+}
+
+.header__buttons .button_red {
+    margin-right: 17px;
+}
