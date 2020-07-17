@@ -138,13 +138,14 @@
 }
 
 .section {
-    padding: 80px 0;
+    padding-top: 77px;
+    padding-bottom: 81px;
     background: #111;
     font-size: 14px;
 }
 
 .section__head {
-    margin-bottom: 45px;
+    margin-bottom: 50px;
 }
 
 .section__sub-title {
@@ -332,4 +333,132 @@
 }
 .trainer:hover .trainer__info {
     color: #12c2e9;
+}
+
+.service {
+    background: #161616;
+}
+
+.service__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.service__card {
+    width: 372px;
+    padding: 24px;
+    text-align: center;
+    line-height: 24px;
+}
+
+.program__icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border: 2px solid #f80759;
+    border-radius: 50%;
+    padding: 28px 0;
+}
+
+.program__title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 45px;
+}
+
+.program__info {
+    font-size: 12px;
+    margin: 25px 0;
+}
+
+.program__learn-more {
+    width: 140px;
+    height: 50px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.reviews {
+    background: url('../img/reviews-bg.png') center top / cover no-repeat;
+}
+
+.reviews__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviews__card {
+    display: flex;
+    width: 555px;
+    height: 300px;
+    background: #222;
+    line-height: 24px;
+}
+
+.review__left {
+    height: 100%;
+    min-width: 230px;
+}
+
+.review:nth-child(1) .review__left {
+    background: url('../img/review1.png') left center / cover no-repeat;
+}
+.review:nth-child(2) .review__left {
+    background: url('../img/review2.png') left center / cover no-repeat;
+}
+
+.review__right {
+    padding: 34px 24px;
+    position: relative;
+}
+
+.review__author {
+    font-size: 18px;
+    font-weight: bold;
+    color: #12c2e9;
+    margin-left: -5px;
+}
+
+.review__author-info {
+    font-size: 10px;
+}
+
+.review__text {
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+.review__stars {
+    position: absolute;
+    bottom: 34px;
+    left: 24px;
+}
+
+.reviews__dots-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.reviews__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    margin-right: 11px;
+    transition: all 0.3s ease;
+}
+.reviews__dot:last-child {
+    margin-right: 0;
+}
+.reviews__dot:hover {
+    cursor: pointer;
+    background: #12c2e9;
+}
+
+.reviews__dot_active {
+    background: #12c2e9;
+}
+.reviews__dot_active:hover {
+    cursor: default;
 }
