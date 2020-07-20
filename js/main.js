@@ -141,6 +141,21 @@ let likePost = function() {
     postHeartIcons[postIndex].classList.remove('far');
     postHeartIcons[postIndex].classList.add('fas');
     this.removeEventListener('click', likePost);
+    this.addEventListener('click', unlikePost);
+};
+let unlikePost = function() {
+    let postIndex = 0;
+    for (let i = 0; i < postLikeButtons.length; i++) {
+        if (postLikeButtons[i] == this) {
+            postIndex = i;
+            break;
+        }
+    }
+    postLikes[postIndex].innerHTML--;
+    postHeartIcons[postIndex].classList.remove('fas');
+    postHeartIcons[postIndex].classList.add('far');
+    this.removeEventListener('click', unlikePost);
+    this.addEventListener('click', likePost);
 };
 
 for (let item of postLikeButtons) {
