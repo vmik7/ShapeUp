@@ -120,3 +120,30 @@ let swipeEnd = function() {
 track.addEventListener('touchstart', swipeStart);
 track.addEventListener('mousedown', swipeStart);
 
+
+
+
+
+// Лайк в посте
+const postLikes = document.querySelectorAll('.post__likes-count');
+const postLikeButtons = document.querySelectorAll('.post__heart');
+const postHeartIcons = document.querySelectorAll('.post__heart i');
+
+let likePost = function() {
+    let postIndex = 0;
+    for (let i = 0; i < postLikeButtons.length; i++) {
+        if (postLikeButtons[i] == this) {
+            postIndex = i;
+            break;
+        }
+    }
+    postLikes[postIndex].innerHTML++;
+    postHeartIcons[postIndex].classList.remove('far');
+    postHeartIcons[postIndex].classList.add('fas');
+    this.removeEventListener('click', likePost);
+};
+
+for (let item of postLikeButtons) {
+    item.addEventListener('click', likePost);
+}
+

@@ -687,7 +687,7 @@
     margin-right: 5px;
 }
 
-.post__heart:hover {
+.post__heart {
     cursor: pointer;
 }
 
