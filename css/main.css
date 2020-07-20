@@ -468,11 +468,21 @@
 .gallery__container {
     overflow: hidden;
     position: relative;
+    /* Чтобы во время перетаскивания слайда ничего не выделить внутри него */
+    user-select: none;
+    /* Чтобы запретить скролл страницы, если мы начали двигать слайдер по оси X */
+    touch-action: pan-y;
+}
+
+/* Если где-то внутри слайдера будут изображения,
+то нужно задать им pointer-events: none,
+чтобы они не перетаскивались мышью */
+.gallery__container img {
+    pointer-events: none;
 }
 
 .gallery__track {
     display: flex;
-    transition: all 0.3s ease;
 }
 
 .gallery__photo {
