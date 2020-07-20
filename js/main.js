@@ -162,3 +162,19 @@ for (let item of postLikeButtons) {
     item.addEventListener('click', likePost);
 }
 
+
+
+
+// Плавная прокрутка до якоря
+const anchorLinks = document.querySelectorAll('.nav a');
+
+for (let item of anchorLinks) {
+    item.addEventListener('click', function(event) {
+        event.preventDefault();
+        const id = this.getAttribute('href');
+        document.querySelector(id).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+}
