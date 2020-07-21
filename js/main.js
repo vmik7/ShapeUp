@@ -129,7 +129,7 @@ const reviewsDotsWrapper = document.querySelector('.reviews__dots-wrapper');
 
 let reviewsCount = reviewsCards.length;
 let currentReview = 0;
-let reviewsByPage = 2;
+let reviewsByPage = (screen.width <= 767 ? 1 : 2);
 let reviewsDotsCount = Math.ceil(reviewsCount / reviewsByPage);
 let reviewWidth = reviewsCards[0].offsetWidth;
 let reviewMarginRight = +getComputedStyle(reviewsCards[0]).marginRight.match(pxRegExp)[0];
@@ -293,4 +293,16 @@ for (let item of anchorLinks) {
             block: 'start'
         });
     });
+}
+
+
+
+
+
+// Выставляем автоматически ширину полоски на ценнике
+let priceCardWidth = document.querySelector('.price__card').offsetWidth;
+let priceCardLabels = document.querySelectorAll('.price__label');
+
+for (let item of priceCardLabels) {
+    item.style.width = priceCardWidth + 'px';
 }

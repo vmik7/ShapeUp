@@ -82,7 +82,7 @@
 .header__nav .nav__item:hover a {
     color: #f80759;
 }
-.nav__item_active a {
+.nav__item.active a {
     color: #f80759;
 }
 
@@ -188,7 +188,7 @@
 }
 
 .about__left {
-    width: 514px;
+    width: 500px;
 }
 
 .section__heading {
@@ -364,8 +364,13 @@
 
 .program__title {
     font-size: 22px;
+    line-height: 30px;
     font-weight: bold;
     margin-top: 45px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .program__info {
@@ -498,6 +503,7 @@
 чтобы они не перетаскивались мышью */
 .gallery__container img {
     pointer-events: none;
+    width: inherit;
 }
 
 .gallery__track {
@@ -521,18 +527,13 @@
     height: 100%;
     left: 0;
     top: 0;
-    /* opacity: 0; */
     cursor: pointer;
-    transition: all 0.3s ease;
 }
-/* .gallery__prev:hover {
-    opacity: 1;
-    cursor: pointer;
-} */
 
 .gallery__prev img {
     position: absolute;
     top: 50%;
+    width: initial;
     margin-top: -16px;
     left: 17px;
 }
@@ -544,18 +545,13 @@
     height: 100%;
     right: 0;
     top: 0;
-    /* opacity: 0; */
     cursor: pointer;
-    transition: all 0.3s ease;
 }
-/* .gallery__next:hover {
-    opacity: 1;
-    cursor: pointer;
-} */
 
 .gallery__next img {
     position: absolute;
     top: 50%;
+    width: initial;
     margin-top: -16px;
     right: 17px;
     transform: rotate(180deg);
@@ -832,7 +828,6 @@
 }
 
 .footer__search-tags {
-    width: 350px;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
