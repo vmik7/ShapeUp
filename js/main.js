@@ -1,6 +1,9 @@
 'use strict'
 
 
+
+
+
 // Слайдер в галлереи
 const container = document.querySelector('.gallery__container');
 const track = document.querySelector('.gallery__track');
@@ -15,7 +18,6 @@ let photoWidth = photos[0].offsetWidth;
 let containerWidth = container.offsetWidth;
 let photoMarginRight = +getComputedStyle(photos[0]).marginRight.match(pxRegExp)[0];
 let currentPhoto = Math.floor(photoCount / 2);
-let photosToScroll = 1;
 let centerPosition = (containerWidth - photoWidth) / 2;
 let posInitial = 0, posCurrent = 0;
 let posThreshold = photoWidth * .35;
@@ -67,8 +69,6 @@ let swipeAction = function() {
   
     let posDelta = posCurrent - evt.clientX;
     posCurrent = evt.clientX;
-
-    console.log('init: ' + posInitial + ', cur: ' + posCurrent);
   
     track.style.transform = `translate3d(${curTranform - posDelta}px, 0px, 0px)`;
 };
@@ -81,9 +81,6 @@ let swipeEnd = function() {
     
     if (posCurrent !== posInitial) {
         let posDelta = posCurrent - posInitial;
-
-        console.log('init: ' + posInitial + ', cur: ' + posCurrent);
-        console.log('delta: ' + posDelta);
 
         while (Math.abs(posDelta) >= photoWidth + photoMarginRight) {
             if (posDelta > 0) {
@@ -98,7 +95,6 @@ let swipeEnd = function() {
                     currentPhoto++;
                 posDelta += photoWidth + photoMarginRight;
             }
-            console.log('delta: ' + posDelta);
         }
         if (Math.abs(posDelta) > posThreshold) {
             if (posDelta > 0) {
@@ -119,6 +115,126 @@ let swipeEnd = function() {
 
 track.addEventListener('touchstart', swipeStart);
 track.addEventListener('mousedown', swipeStart);
+
+
+
+
+
+
+// Слайдер отзывов
+const reviewsContainer = document.querySelector('.reviews__wrapper');
+const reviewsTrack = document.querySelector('.reviews__track');
+const reviewsCards = document.querySelectorAll('.reviews__card');
+const reviewsDotsWrapper = document.querySelector('.reviews__dots-wrapper');
+
+let reviewsCount = reviewsCards.length;
+let currentReview = 0;
+let reviewsByPage = 2;
+let reviewsDotsCount = Math.ceil(reviewsCount / reviewsByPage);
+let reviewWidth = reviewsCards[0].offsetWidth;
+let reviewMarginRight = +getComputedStyle(reviewsCards[0]).marginRight.match(pxRegExp)[0];
+let reviewsPosInitial = 0, reviewsPosCurrent = 0;
+let reviewsPosThreshold = (reviewWidth * reviewsByPage + reviewMarginRight) * .35;
+
+reviewsDotsWrapper.innerHTML = '';
+for (let i = 0; i < reviewsDotsCount; i++) {
+    reviewsDotsWrapper.innerHTML += '<div class="reviews__dot"></div>';
+}
+const reviewsDots = document.querySelectorAll('.reviews__dot');
+
+let setReview = function(index = currentReview) {
+    currentReview = index - index % reviewsByPage;
+    let pointIndex = 0;
+    while (pointIndex * reviewsByPage < currentReview) {
+        pointIndex++;
+    }
+    for (let dot of reviewsDots) {
+        dot.classList.remove('active');
+    }
+    reviewsDots[pointIndex].classList.add('active');
+    reviewsTrack.style.transition = 'all 0.3s ease';
+    reviewsTrack.style.transform = `translate3d(${
+        - currentReview * (reviewWidth + reviewMarginRight)
+    }px, 0px, 0px)`;
+}
+setReview(0);
+
+for (let dot of reviewsDots) {
+    dot.addEventListener('click', function() {
+        let dotIndex = 0;
+        for (let i = 0; i < reviewsDots.length; i++) {
+            if (reviewsDots[i] == this) {
+                dotIndex = i;
+                break;
+            }
+        }
+        setReview(dotIndex * reviewsByPage);
+    });
+}
+
+let reviewsSwipeStart = function() {
+    let evt = getEvent();
+  
+    reviewsPosInitial = reviewsPosCurrent = evt.clientX;
+    reviewsTrack.style.transition = '';
+  
+    document.addEventListener('touchmove', reviewsSwipeAction);
+    document.addEventListener('touchend', reviewsSwipeEnd);
+    document.addEventListener('mousemove', reviewsSwipeAction);
+    document.addEventListener('mouseup', reviewsSwipeEnd);
+};
+
+let reviewsSwipeAction = function() {
+    let evt = getEvent();
+    let curTranform = +reviewsTrack.style.transform.match(pxRegExp)[0];
+  
+    let posDelta = reviewsPosCurrent - evt.clientX;
+    reviewsPosCurrent = evt.clientX;
+  
+    reviewsTrack.style.transform = `translate3d(${curTranform - posDelta}px, 0px, 0px)`;
+};
+
+let reviewsSwipeEnd = function() {
+    document.removeEventListener('touchmove', reviewsSwipeAction);
+    document.removeEventListener('mousemove', reviewsSwipeAction);
+    document.removeEventListener('touchend', reviewsSwipeEnd);
+    document.removeEventListener('mouseup', reviewsSwipeEnd);
+    
+    if (reviewsPosCurrent !== reviewsPosInitial) {
+        let posDelta = reviewsPosCurrent - reviewsPosInitial;
+
+        while (Math.abs(posDelta) >= reviewsByPage * (reviewWidth + reviewMarginRight)) {
+            if (posDelta > 0) {
+                // Left swipe -->
+                currentReview = Math.max(0, currentReview - reviewsByPage);
+                posDelta -= reviewsByPage * (reviewWidth + reviewMarginRight);
+            }
+            else {
+                // Right swipe <--
+                currentReview = Math.min((reviewsCount - 1) - (reviewsCount - 1) % reviewsByPage, currentReview + reviewsByPage);
+                posDelta += reviewsByPage * (reviewWidth + reviewMarginRight);
+            }
+        }
+        if (Math.abs(posDelta) > reviewsPosThreshold) {
+            if (posDelta > 0) {
+                // Left swipe -->
+                currentReview = Math.max(0, currentReview - reviewsByPage);
+                posDelta -= reviewsByPage * (reviewWidth + reviewMarginRight);
+            }
+            else {
+                // Right swipe <--
+                currentReview = Math.min((reviewsCount - 1) - (reviewsCount - 1) % reviewsByPage, currentReview + reviewsByPage);
+                posDelta += reviewsByPage * (reviewWidth + reviewMarginRight);
+            }
+        }
+
+        setReview();
+    }
+};
+
+reviewsTrack.addEventListener('touchstart', reviewsSwipeStart);
+reviewsTrack.addEventListener('mousedown', reviewsSwipeStart);
+
 
 
 
