@@ -306,3 +306,30 @@ let priceCardLabels = document.querySelectorAll('.price__label');
 for (let item of priceCardLabels) {
     item.style.width = priceCardWidth + 'px';
 }
+
+
+
+
+// Попап на заказ программы тренировок
+const bookButtons = document.querySelectorAll('.price__button');
+const popup = document.querySelector('.popup');
+const popupCloseButton = document.querySelector('.popup__close');
+
+function showPopup() {
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closePopup() {
+    popup.classList.remove('active');
+    document.body.style.overflow = 'initial';
+}
+
+for (let btn of bookButtons) {
+    btn.addEventListener('click', showPopup);
+}
+popupCloseButton.addEventListener('click', closePopup);
+window.addEventListener('click', function(event) {
+    if (event.target == popup) {
+        closePopup();
+    }
+});
